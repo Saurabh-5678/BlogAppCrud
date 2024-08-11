@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+
+// import './App.css';
+// import { BlogProvider } from './componants/BlogContext';
+// import BlogForm from './componants/BlogForm';
+// import BlogList from './componants/BlogList';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <BlogProvider>
+//         <div className='container'>
+
+//           <h1 style={{fontFamily:'sans-serif', textShadow:'2px 2px 2px blue',color:"white",fontSize:'2.5rem',textAlign:'center',margin:'1rem 0'}}>Blog Application</h1>
+//           <BlogForm/>
+//           <BlogList/>
+//         </div>
+//       </BlogProvider>
+//     </div>
+//   );
+// }
+
+// export default App;
 import './App.css';
+import { BlogProvider } from './componants/BlogContext';
+import BlogForm from './componants/BlogForm';
+import BlogList from './componants/BlogList';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Navbar from './componants/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <BlogProvider>
+        <div className="App">
+          <div className='container'>
+            <Navbar/>
+   
+            <h1 style={{ fontFamily: 'sans-serif', textShadow: '2px 2px 2px blue', color: "white", fontSize: '2.5rem', textAlign: 'center', margin: '1rem 0' }}>
+              Blog Application
+            </h1>
+            <Routes>
+              <Route path="/" element={<BlogForm />} />
+              <Route path="/blogs" element={<BlogList />} />
+            </Routes>
+          </div>
+        </div>
+      </BlogProvider>
+    </Router>
   );
 }
 
